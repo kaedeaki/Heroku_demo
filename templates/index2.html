@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ML API</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<div class="login">
+	<h1>Housing Price</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+        <label for="area">Area:</label>
+        <input type="text" name="area" id="area" placeholder="eg:7000" required="required" />
+
+        <label for="bedrooms">Bedrooms:</label>
+        <input type="text" name="bedrooms" id="bedrooms" placeholder="eg:5" required="required" />
+
+        <label for="bathrooms">Bathrooms:</label>
+        <input type="text" name="bathrooms" id="bathrooms" placeholder="eg:3" required="required" />
+
+        <label for="stories">Stories:</label>
+        <input type="text" name="stories" id="stories" placeholder="eg:2" required="required" />
+
+        <label for="parking">Parking:</label>
+        <input type="text" name="parking" id="parking" placeholder="eg:1" required="required" />
+
+        <label for="basement_yes">Basement:</label>
+        <select name="basement_yes" id="basement_yes">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+
+        <label for="hotwaterheating_yes">HotwaterHeating:</label>
+        <select name="hotwaterheating_yes" id="hotwaterheating_yes">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+</body>
+</html>
