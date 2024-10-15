@@ -36,4 +36,6 @@ def predict():
     return render_template('index2.html', flag=True, prediction_text=f'Housing price should be ${output}.')
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # 環境変数PORTを使ってポートを指定
+    port = int(os.environ.get("PORT", 5000))  # デフォルトで5000ポートを使用
+    app.run(host='0.0.0.0', port=port, debug=True)  # 0.0.0.0でリッスン
