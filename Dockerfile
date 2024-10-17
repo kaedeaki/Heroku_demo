@@ -6,7 +6,7 @@ WORKDIR /app
 
 # 依存関係をコピーし、インストール
 COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # アプリケーションファイルをコピー
 COPY . .
@@ -15,4 +15,4 @@ COPY . .
 EXPOSE 5000
 
 # アプリケーションを起動
-CMD ["python", "app2.py"]
+CMD ["python", "app2.py", "--host=0.0.0.0"]
